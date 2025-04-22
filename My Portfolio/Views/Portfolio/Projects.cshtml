@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyPortfolio.Models.Project>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Projects";
+}
+
+<div class="container py-5">
+    <h2 class="text-center mb-5 text-info display-5">Projects</h2>
+
+    <div class="row g-4">
+        @foreach (var project in Model)
+        {
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow" style="background-color: #1e293b; color: #e0f2fe;">
+                    <div class="card-body">
+                        <h5 class="card-title text-info fw-bold">@project.Title</h5>
+                        <p class="card-text">@project.Description</p>
+                        <span class="badge bg-primary text-white">@project.TechStack</span>
+                    </div>
+                    <div class="card-footer border-0 bg-transparent">
+                        <a href="@project.GitHubUrl" target="_blank" class="btn btn-outline-info">
+                            <i class="bi bi-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <p class="text-center mt-5 text-info fs-5 fst-italic">🚀 More projects coming soon!</p>
+</div>

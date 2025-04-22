@@ -1,0 +1,43 @@
+﻿@model MyPortfolio.Models.ContactFormModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container">
+    <h2 class="mb-4">Contact Me</h2>
+
+    @if (TempData["MessageSent"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["MessageSent"]
+        </div>
+    }
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="Name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" placeholder="Your full name" value="@Model.Name">
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="your@email.com" value="@Model.Email">
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <label for="Message" class="form-label">Message</label>
+            <textarea class="form-control" id="Message" name="Message" rows="4" placeholder="Write your message here...">@Model.Message</textarea>
+            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
