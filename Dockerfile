@@ -15,4 +15,4 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 # Run the app
-ENTRYPOINT ["dotnet", "My_Portfolio.dll"]
+ENTRYPOINT ["dotnet", "MyPortfolio.dll"]
